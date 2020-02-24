@@ -1,37 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 
+// Copyright 2018 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// You can use a relative import, i.e. `import 'category_route.dart;'` or
+// a package import, as shown below.
+// More details at http://dart-lang.github.io/linter/lints/avoid_relative_lib_imports.html
+import 'package:epics_flutter_app/category_route.dart';
+
+/// The function that is called when main.dart is run.
 void main() {
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Hello Rectangle',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Hello Rectangle'),
-        ),
-        body: HelloRectangle(),
-      ),
-    ),
-  );
+  runApp(GymTrackerApp());
 }
 
-class HelloRectangle extends StatelessWidget {
+/// This widget is the root of our application.
+///
+/// The first screen we see is a list [Categories].
+class GymTrackerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        color: Colors.greenAccent,
-        height: 400.0,
-        width: 300.0,
-        child: Center(
-          child: Text(
-            'Hello!',
-            style: TextStyle(fontSize: 40.0),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Gym Tracker',
+      home: CategoryRoute(),
     );
   }
 }
