@@ -39,7 +39,7 @@ class _CategoryRouteState extends State<CategoryRoute> {
   ];
 
   static const _icons = <IconData> [
-    Icons.show_chart,
+    Icons.fitness_center,
     Icons.fastfood,
     Icons.local_dining,
   ];
