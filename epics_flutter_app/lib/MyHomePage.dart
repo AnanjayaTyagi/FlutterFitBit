@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: PageView(
         children: <Widget>[
-          Modi(),
+          ModiRoute(),
           Info()
         ],
         controller: _pageController,

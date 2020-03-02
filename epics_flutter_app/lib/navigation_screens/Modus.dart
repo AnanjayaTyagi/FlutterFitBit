@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 // @required is defined in the meta.dart package
 import 'package:meta/meta.dart';
+import 'package:epics_flutter_app/navigation_screens/Data.dart';
+import 'package:epics_flutter_app/navigation_screens/DataRoute.dart';
 
 // We use an underscore to indicate that these variables are private.
 // See https://www.dartlang.org/guides/language/effective-dart/design#libraries
@@ -15,6 +17,7 @@ class Modus extends StatelessWidget {
   final String name;
   final ColorSwatch color;
   final IconData iconLocation;
+  final List<Data> data;
 
   /// Creates a [Category].
   ///
@@ -28,14 +31,34 @@ class Modus extends StatelessWidget {
     @required this.name,
     @required this.color,
     @required this.iconLocation,
+    @required this.data,
   })  : assert(name != null),
         assert(color != null),
         assert(iconLocation != null),
+        assert(data != null),
         super(key: key);
 
   /// Navigates to the [ConverterRoute].
-  void _navigateToConverter(BuildContext context) {
-    // TODO: Using the Navigator, navigate to the [ConverterRoute]
+  void _navigateToStorage(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute<Null>(
+      builder: (BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            elevation: 1.0,
+            title: Text(
+              name,
+              style: Theme.of(context).textTheme.display1,
+            ),
+            centerTitle: true,
+            backgroundColor: color,
+          ),
+          body: DataRoute(
+            color: color,
+            data: data,
+          ),
+        );
+      },
+    ));
   }
 
   /// Builds a custom widget that shows [Category] information.
@@ -57,10 +80,7 @@ class Modus extends StatelessWidget {
           splashColor: color,
           // We can use either the () => function() or the () { function(); }
           // syntax.
-          // TODO: Update this onTap property to call _navigateToConverter()
-          onTap: () {
-            print('I was tapped!');
-          },
+          onTap: () => _navigateToStorage(context),
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
